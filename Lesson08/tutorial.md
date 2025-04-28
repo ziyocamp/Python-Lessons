@@ -1,132 +1,212 @@
-# **Python For Loop - Oddiy va Amaliy Qo'llanma**
+# 🐍 Python For Loop - To'liq Dars va Qo'llanma
 
-## **🔹 For Loop Asoslari**
-For Loop - bu ketma-ketlikdagi elementlar bo'yicha aylanish uchun ishlatiladi.
+---
 
-**Oddiy misol:**
+## 1. For Loop nima?
+
+Python'da **for loop** yordamida biror ro'yxat, matn yoki ketma-ketlikdagi barcha elementlarni navbat bilan ko'rib chiqish mumkin.
+
+**Asosiy shakli:**
 ```python
-mevalar = ['olma', 'banan', 'nok']
+for element in collection:
+    # har bir element uchun bajariladigan kod
+```
+
+- `element` — har bir aylanada ro'yxatdagi bitta qiymat bo'ladi
+- `collection` — ro'yxat (list), matn (string), range va boshqalar bo'lishi mumkin
+
+---
+
+## 2. Oddiy misol: Ro'yxatni chiqarish
+
+```python
+mevalar = ['olma', 'banan', 'gilos']
 for meva in mevalar:
     print(meva)
 ```
-👉 *Har bir meva nomini alohida qatorda chiqaradi*
 
-## **🔹 String (Matn) bilan For Loop**
-Matndagi har bir belgini ajratib olish:
+**Natija:**
+```
+olma
+banan
+gilos
+```
+
+> ❗ Har safar `for` ichida `meva` o'zgaruvchisi ro'yxatdagi keyingi elementni oladi.
+
+---
+
+## 3. String (matn) ustida For Loop
+
+Matn ham belgilar ketma-ketligi (string = sequence).  
+Shuning uchun matndagi har bir harfni ko'rib chiqish mumkin:
 
 ```python
 ism = "Python"
 for harf in ism:
     print(harf)
 ```
-👉 *P-y-t-h-o-n harflarini alohida chiqaradi*
 
-**Amaliy misol:** Unlilarni sanash
-```python
-matn = "Dasturlash"
-unlilar = 0
-for harf in matn.lower():
-    if harf in 'aeiou':
-        unlilar += 1
-print(f"Unlilar soni: {unlilar}")
+**Natija:**
+```
+P
+y
+t
+h
+o
+n
 ```
 
-## **🔹 Range() bilan For Loop**
-**Oddiy range:**
+---
+
+## 4. Range() va For Loop
+
+Agar ro'yxatimiz bo'lmasa, lekin ma'lum sonlar ketma-ketligini yaratmoqchi bo'lsak — **range()** funksiyasidan foydalanamiz.
+
 ```python
-for i in range(5):
-    print(i)  # 0 1 2 3 4
+for son in range(5):
+    print(son)
 ```
 
-**Qadam bilan:**
-```python
-for i in range(2, 11, 2):
-    print(i)  # 2 4 6 8 10
+**Natija:**
+```
+0
+1
+2
+3
+4
 ```
 
-**Teskari hisoblash:**
-```python
-for i in range(5, 0, -1):
-    print(i)  # 5 4 3 2 1
-```
+> `range(5)` — bu 0 dan 4 gacha bo'lgan sonlar ketma-ketligi.
 
-## **🔹 List (Ro'yxat) bilan For Loop**
-**Oddiy ishlatilishi:**
+---
+
+## 5. Amaliy For Loop Misollar
+
+### 5.1 Ro'yxatdagi sonlarni ikki barobar oshirish
+
 ```python
-sonlar = [10, 20, 30, 40]
+sonlar = [1, 2, 3, 4, 5]
 for son in sonlar:
-    print(son * 2)  # 20 40 60 80
+    print(son * 2)
 ```
+➡️ Har bir son 2 barobarga ko'payadi.
 
-**Elementlarni o'zgartirish:**
+---
+
+### 5.2 Stringni teskari o'qish
+
 ```python
-mevalar = ['olma', 'banan', 'nok']
-for i in range(len(mevalar)):
-    mevalar[i] = mevalar[i].upper()
-print(mevalar)  # ['OLMA', 'BANAN', 'NOK']
+matn = "hello"
+teskari = ""
+
+for harf in matn:
+    teskari = harf + teskari
+
+print(teskari)
+```
+➡️ Matn teskari o'qiladi.
+
+---
+
+### 5.3 Har bir mevaning uzunligini chiqarish
+
+```python
+mevalar = ['olma', 'banan', 'gilos']
+for meva in mevalar:
+    print(f"{meva} - {len(meva)} harf")
+```
+➡️ Mevalar va ularning uzunliklari ko'rsatiladi.
+
+---
+
+## 6. Shart bilan For Loop (if ichida)
+
+For loop ichida shart (`if`) ishlatish ham mumkin.  
+Misol uchun, faqat juft sonlarni chiqarish:
+
+```python
+sonlar = [12, 7, 9, 24, 5, 18]
+for son in sonlar:
+    if son % 2 == 0:
+        print(son)
 ```
 
-## **🔹 Break va Continue**
-**Break misoli:**
+➡️ Faqat juft sonlar chiqariladi: 12, 24, 18
+
+---
+
+## 7. Break va Continue
+
+**Break** — for loopni to'xtatadi.
+
 ```python
 for i in range(10):
     if i == 5:
         break
-    print(i)  # 0 1 2 3 4
+    print(i)
 ```
+➡️ 0 dan 4 gacha chiqaradi, 5 ga kelganda to'xtaydi.
 
-**Continue misoli:**
+---
+
+**Continue** — faqat shu bosqichni o'tkazib yuboradi.
+
 ```python
 for i in range(10):
     if i % 2 == 0:
         continue
-    print(i)  # 1 3 5 7 9
+    print(i)
 ```
+➡️ Faqat toq sonlar chiqariladi.
 
-## **🔹 Amaliy Vazifalar**
+---
 
-### **1. Darajalarni hisoblash**
+## 8. Narxlar bilan amaliy mashqlar
+
+Narxlar ro'yxati ustida ishlashni o'rganamiz.
+
+---
+
+### 8.1 Narxlarni ikki barobarga oshirish
+
 ```python
-n = int(input("Son: "))
-for i in range(1, 11):
-    print(f"{n} ning {i}-darajasi: {n**i}")
+narxlar = [10000, 25000, 5000, 12000]
+for narx in narxlar:
+    print(narx * 2)
 ```
 
-### **2. So'z uzunligi**
+---
+
+### 8.2 10000 so'mdan katta narxlarni chiqarish
+
 ```python
-sozlar = ['python', 'dasturlash', 'algoritm']
-for soz in sozlar:
-    print(f"{soz} - {len(soz)} harf")
+narxlar = [7000, 15000, 20000, 5000]
+for narx in narxlar:
+    if narx > 10000:
+        print(narx)
 ```
 
-### **3. Teskari matn**
+---
+
+### 8.3 Har bir narxga 5000 qo'shish
+
 ```python
-matn = input("Matn kiriting: ")
-teskari = ""
-for harf in matn:
-    teskari = harf + teskari
-print(teskari)
+narxlar = [8000, 14000, 23000, 9000]
+for narx in narxlar:
+    print(narx + 5000)
 ```
 
-### **4. Sonlar filtrlash**
+---
+
+### 8.4 15% chegirma bilan narxlarni chiqarish
+
 ```python
-sonlar = [23, 45, 12, 67, 89, 34]
-juftlar = []
-for son in sonlar:
-    if son % 2 == 0:
-        juftlar.append(son)
-print("Juft sonlar:", juftlar)
+narxlar = [20000, 30000, 15000, 40000]
+for narx in narxlar:
+    chegirma = narx * 0.15
+    yangi_narx = narx - chegirma
+    print(f"Asl narx: {narx}, Chegirmali narx: {int(yangi_narx)}")
 ```
 
-## **🔹 Qo'shimcha Maslahatlar**
-1. Har doim o'zgaruvchilarga tushunarli nom bering
-2. Kichik qismlarga bo'lib ishlang
-3. print() funksiyasi bilan har qadamni tekshiring
-4. Xatolarni topish uchun kodni qismma-qism ishga tushiring
-
-**Misol:** Debug qilish
-```python
-mevalar = ['olma', 'banan', 'nok']
-for i, meva in enumerate(mevalar):
-    print(f"{i}. {meva}")  # Har bir qadamni ko'rish
-```
+---
